@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Calculator</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/animations.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="main-container">
+            <!-- Container for input fields and button -->
+            <div class="input-container">
+                <h1>IP Calculator</h1>
+                <div>
+                    <label for="ip">IP Address:</label>
+                    <input type="text" id="ip" placeholder="192.168.1.1">
+                </div>
+                <div>
+                    <label for="subnet">Subnet Mask / CIDR:</label>
+                    <input type="text" id="subnet" placeholder="255.255.255.0 or 24">
+                </div>
+                <button id="calculate">Calculate</button>
+            </div>
+
+            <!-- Container for results table -->
+            <div id="results-container" class="results-container">
+                <table id="resultsTable" class="hidden">
+                    <thead>
+                        <tr>
+                            <th>Data Name</th>
+                            <th>Decimal</th>
+                            <th>Binary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Results will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Container for converters below the IP calculator -->
+        <div class="converter-container">
+            <div class="converter">
+                <h2>Convert Binary to Decimal</h2>
+                <div>
+                    <label for="binary">Binary:</label>
+                    <input type="text" id="binary">
+                </div>
+                <button id="toDecimal">Convert to Decimal</button>
+                <div id="decimalResult" class="result"></div>
+            </div>
+
+            <div class="converter">
+                <h2>Convert Decimal to Binary</h2>
+                <div>
+                    <label for="decimal">Decimal:</label>
+                    <input type="text" id="decimal">
+                </div>
+                <button id="toBinary">Convert to Binary</button>
+                <div id="binaryResult" class="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/ipCalculator.js"></script>
+    <script src="scripts/binaryConverter.js"></script>
+    <script src="scripts/animations.js"></script>
+</body>
+</html>
