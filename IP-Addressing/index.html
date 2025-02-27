@@ -10,10 +10,10 @@
 </head>
 <body>
     <div class="container">
+        <button id="toggleButton" class="toggle-button">IPv6</button>
         <div class="main-container">
-            <!-- Container for input fields and button -->
             <div class="input-container">
-                <h1>IP Calculator</h1>
+                <h1 id="calculatorTitle">IPv4 Calculator</h1>
                 <div>
                     <label for="ip">IP Address:</label>
                     <input type="text" id="ip" placeholder="192.168.1.1">
@@ -24,8 +24,6 @@
                 </div>
                 <button id="calculate">Calculate</button>
             </div>
-
-            <!-- Container for results table -->
             <div id="results-container" class="results-container">
                 <table id="resultsTable" class="hidden">
                     <thead>
@@ -36,13 +34,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Results will be inserted here -->
                     </tbody>
                 </table>
             </div>
         </div>
-
-        <!-- Container for converters below the IP calculator -->
         <div class="converter-container">
             <div class="converter">
                 <h2>Convert Binary to Decimal</h2>
@@ -53,7 +48,6 @@
                 <button id="toDecimal">Convert to Decimal</button>
                 <div id="decimalResult" class="result"></div>
             </div>
-
             <div class="converter">
                 <h2>Convert Decimal to Binary</h2>
                 <div>
@@ -65,9 +59,37 @@
             </div>
         </div>
     </div>
-
     <script src="scripts/ipCalculator.js"></script>
     <script src="scripts/binaryConverter.js"></script>
     <script src="scripts/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    let isIPv4 = true;
+    const body = document.body;
+    
+    document.getElementById('toggleButton').addEventListener('click', function() {
+        let title = document.getElementById('calculatorTitle');
+        let ipInput = document.getElementById('ip');
+        let subnetInput = document.getElementById('subnet');
+        let toggleButton = document.getElementById('toggleButton');
+        
+        if (isIPv4) {
+            title.innerText = 'IPv6 Calculator';
+            ipInput.placeholder = '2001:db8::1';
+            subnetInput.placeholder = '64';
+            toggleButton.innerText = 'IPv4';
+            body.classList.add('ipv6');
+        } else {
+            title.innerText = 'IPv4 Calculator';
+            ipInput.placeholder = '192.168.1.1';
+            subnetInput.placeholder = '255.255.255.0 or 24';
+            toggleButton.innerText = 'IPv6';
+            body.classList.remove('ipv6');
+        }
+        isIPv4 = !isIPv4;
+    });
+});
+
+    </script>
 </body>
 </html>
